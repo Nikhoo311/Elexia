@@ -88,18 +88,8 @@ module.exports = {
         })
         interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] })
 
-        /**
-
-            + faire l'update un base de donnée
-         */
-
-        // Ajouter un attribu, need to be stored pour récup toutes les modifications et ensuite faire un update
         currentMap.makeDirty()
         console.log(currentMap);
         console.log(player);
-        
-        
-        
-        
     }
 }
