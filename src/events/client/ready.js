@@ -5,6 +5,7 @@ const Player = require("../../class/Player");
 const PlayerMap = require("../../class/Player_Maps");
 const logger = require("../../functions/utils/Logger");
 const inventories = require("../../schemas/inventories");
+const gardens = require("../../schemas/gardens");
 
 module.exports = {
     name: "ready",
@@ -75,6 +76,16 @@ module.exports = {
                     }
                     }
                 );
+
+                await gardens.updateOne(
+                    { _id: player.garden._id },
+                    {
+                    $set: {
+                        plantedSeeds: player.garden.plantedSeeds,
+                        timeToPeakUp: player.garden.timeToPeakUp
+                    }
+                    }
+                )
 
                 // Mise à jour en mémoire
                 player.makeClear()
